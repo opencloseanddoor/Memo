@@ -38,7 +38,7 @@ dependencies {
 	
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0' //미리보기 파일이다
 	
-	 implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'  // 추가
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'  // 추가
 }
 
 tasks.named('test') {

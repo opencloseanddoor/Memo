@@ -10,9 +10,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body>
 
     <div id="wrap">
-        <th:block layout:fragment="~{fragments/header :: header}"></th:block>
+        <th:block th:replace="~{fragments/header :: header}"></th:block>
         <th:block layout:fragment="contents"></th:block>
-        <th:block layout:fragment="~{fragments/footer :: footer"></th:block>
+        <th:block th:replace="~{fragments/footer :: footer}"></th:block>
     </div>
     
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
