@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#wrap
+{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+header
+{
+	height: 80px;
+    background-color: #cccccc;
+}
+
+.contents > .input-box
+{
+	width: 400px;
+	background-color: #cccccc;
+}
+
+.contents > .post-box
+{
+	width:800px;
+}
+
+footer
+{
+	height: 70px;
+	background-color: #cccccc;
+}

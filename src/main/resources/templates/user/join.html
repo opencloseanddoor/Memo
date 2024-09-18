@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org" 
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/default}">
+
+        <section layout:fragment="contents" class="contents d-flex justify-content-center">
+            <div class="input-box my-5 p-5 rounded-lg h-100">
+                <h2 class="text-center">회원가입</h2>
+                
+                <div class="input-group mt-4">
+                	<input type="text" placeholder="아이디" id="id-input" class="form-control">
+                </div>
+                
+                <div class="d-none">dd</div>
+                <div class="d-none">dd</div>
+                <input type="password" placeholder="비밀번호" id="password-input" class="form-control mt-2">
+                <input type="password" placeholder="비밀번호 확인" id="password-check" class="form-control mt-2">
+                <input type="text" placeholder="이름" id="name-input" class="form-control mt-2">
+                <input type="text" placeholder="이메일 주소" id="email-input" class="form-control mt-2">
+                <button type="button" id="submit-btn" class="btn btn-secondary btn-block mt-3">가입</button>
+            </div>
+        </section>
+        
+        <script layout:fragment="script">
+        	$(document).ready(function()
+        	{
+        		$("#submit-btn").on("click", function()
+        		{
+        			let id = $("#id-input").val();
+        			let password = $("#password-input").val();
+        			let password_check = $("#password-check").val();
+        			let name = $("#name-input").val();
+        			let email = $("#email-input").val();
+        			
+        			if(id == "")
+        			{
+        				alert("ID를 입력해주세요.");
+        				return;
+        			}
+        			
+        			else if(password == "")
+        			{
+        				alert("패스워드를 입력해주세요.");
+        				return;
+        			}
+        			
+        			else if(password_check == "")
+        			{
+        				alert("패스워드 확인란을 입력해주세요.")
+        				return;
+        			}
+        			
+        			else if(name == "")
+        			{
+        				alert("이름을 입력해주세요.");
+        				return;
+        			}
+        			
+        			else if(email == "")
+        			{
+        				alert("이메일을 입력해주세요.");
+        				return;
+        			}
+        			
+        			$.ajax
+        			({
+        				type:"post",
+        				url:"/user/join",
+        				data:{"loginId":id, "password":password, "name":name, "email":email},
+        				success:function(data)
+        				{
+        					if(data.result == "success")
+        					{
+        						location.href="/user/login-view";
+        					}
+        					else 
+        					{
+        						alert("회원가입 실패!!");
+        					}
+        				},
+        				error:function()
+        				{
+        					alert("회원가입 에러!!");
+        				}
+        			});
+        		});
+	       	});
+        </script>
+        
+</html>
