@@ -49,4 +49,9 @@ public class PostService
 		
 		return post;
 	}
+	
+	public int dropMemo(int userId)
+	{
+		return postRepository.deleteMemo(userId);
+	}
 }

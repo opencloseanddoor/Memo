@@ -4,7 +4,7 @@
 	    <h1 class="ml-4">Memo</h1>
 	    
 	    <div th:if="${session.userId != null}" class="mr-4">
-	    	<span th:text="${session.userName}">사용자</span><a href="/user/logout">로그아웃</a>
+	    	<span class="mr-3" th:text="${session.userName}">사용자</span><a href="/user/logout">로그아웃</a>
 	    </div>
 	</header>
 </html>

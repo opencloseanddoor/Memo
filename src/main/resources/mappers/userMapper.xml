@@ -34,6 +34,7 @@
 	<select id="selectUser" parameterType="map"
 	resultType="com.sam.memo.user.domain.User">
 		SELECT
+		    `id`,
 			`loginId`,
 			`password`,
 			`name`,
@@ -49,4 +50,8 @@
 			AND
 			`password` = #{password};
 	</select>
+	
+	<delete id="deleteMemo" parameterType="int">
+	   DELETE FROM `post` WHERE `userId` = #{loginId};
+	</delete>
 </mapper>

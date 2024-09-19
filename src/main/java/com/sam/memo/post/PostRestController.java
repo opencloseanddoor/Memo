@@ -51,4 +51,28 @@ public class PostRestController
 		
 		return resultMap;
 	}
+	
+	@PostMapping("/deleteMemo")
+	public Map<String, String> deleteMemo
+	(
+		HttpSession session
+	)
+	{
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = postService.dropMemo(userId);
+		
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1)
+		{
+			resultMap.put("result", "success");
+		}
+		else
+		{
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
 }
