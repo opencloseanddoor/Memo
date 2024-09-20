@@ -29,13 +29,13 @@ public class UserRestController
 		this.userService = userService;
 	}
 	
-	@PostMapping("/join")
+	@PostMapping("join")
 	public Map<String, String> join
 	(
-			@RequestParam("loginId") String loginId,
-			@RequestParam("password") String password,
-			@RequestParam("name") String name,
-			@RequestParam("email") String email
+		@RequestParam("loginId") String loginId,
+		@RequestParam("password") String password,
+		@RequestParam("name") String name,
+		@RequestParam("email") String email
 	)
 	{
 		int count = userService.addUser(loginId, password, name, email);
@@ -46,9 +46,10 @@ public class UserRestController
 		{
 			resultMap.put("result", "success");
 		}
-		else 
+		
+		else
 		{
-			resultMap.put("result", "fali");
+			resultMap.put("result", "fail");
 		}
 		
 		return resultMap;
@@ -66,7 +67,7 @@ public class UserRestController
 		return resultMap;
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("login")
 	public Map<String, String> login
 	(
 		@RequestParam("loginId") String loginId,
@@ -82,22 +83,16 @@ public class UserRestController
 		{
 			resultMap.put("result", "success");
 			
-			// HttpServletRequest 객체로부터 얻어온다.
-			// 특정 클라이언트에서 사용될 session을 의미한다.
 			HttpSession session = request.getSession();
 			
-			// key, value 형태의 데이터 관리
-			// 로그인 되었다는 정보를 저장합니다
-			// 어떤 페이지에서 해당 정보를 사용할 수 있다.
-			// 로그인된 사용자 정보를 저장해서 사용자 정보 기반의 페이지를 구성할 수 있다.
 			session.setAttribute("userId", user.getId());
-			session.setAttribute("userName", user.getName());			
+			session.setAttribute("userName", user.getName());
 		}
+		
 		else
 		{
 			resultMap.put("result", "fail");
 		}
-		
 		return resultMap;
 	}
 }

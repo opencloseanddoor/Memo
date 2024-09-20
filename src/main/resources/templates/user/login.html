@@ -34,9 +34,9 @@
         			
         			$.ajax
         			({
-        				type:"post",
-        				url:"/user/login",
-        				data:{"loginId":id, "password":password},
+        				type:"post", // 메소드의 Request형식은 post이다
+        				url:"/user/login", //경로는 /user/login이다
+        				data:{"loginId":id, "password":password}, //매개변수는 loginId와 password이다 그리고 그 매개변수에다가 프론트엔드에서 입력을 받은 값을 대입한다.
         				success:function(data)
         				{
         					if(data.result == "success")

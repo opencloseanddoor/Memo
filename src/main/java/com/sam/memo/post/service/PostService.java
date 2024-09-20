@@ -43,6 +43,8 @@ public class PostService
 	
 	public Post getPost(int id)
 	{
+		// OPtional을 사용하는 이유는 Null Pointer Exception을 방지하기위해서 사용을 한다
+		// Null Pointer Exception이 발생을 하면 프로그램이 강제로 종료가 되기 때문에 Jpa를 사용을 하면 무조건 OPtional객체를 통해서 repositroy의 값을 전달을 받아야한다
 		Optional<Post> optionalPost = postRepository.findById(id);
 		
 		Post post = optionalPost.orElse(null);
@@ -50,8 +52,8 @@ public class PostService
 		return post;
 	}
 	
-	public int dropMemo(int userId)
-	{
-		return postRepository.deleteMemo(userId);
-	}
+//	public int dropMemo(int userId)
+//	{
+//		return postRepository.deleteMemo(userId);
+//	}
 }
